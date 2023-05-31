@@ -33,11 +33,16 @@ public class CategoriesActivity extends AppCompatActivity {
         setupData();
         setupCategoriesAdapter();
         setupCategoriesRv();
-        /*setupApiService();
-        fetchCategories();*/
+        setupApiService();
     }
 
-    /*private void fetchCategories() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchCategories();
+    }
+
+    private void fetchCategories() {
         Call<List<String>> call = fakeApiService.fetchCategories();
         call.enqueue(new Callback<List<String>>() {
             @Override
@@ -56,7 +61,7 @@ public class CategoriesActivity extends AppCompatActivity {
     private void setupApiService() {
         FakeApi fakeApi = new FakeApi();
         fakeApiService = fakeApi.createFakeApiService();
-    }*/
+    }
 
     private void setupCategoriesAdapter() {
         categoriesAdapter = new CategoriesAdapter();
