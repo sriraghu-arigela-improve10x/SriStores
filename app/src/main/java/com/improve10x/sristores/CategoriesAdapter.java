@@ -12,8 +12,9 @@ import java.util.ArrayList;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder> {
 
-    private ArrayList<Categories> categoriesList;
-    void setData(ArrayList<Categories> categories) {
+    private ArrayList<String> categoriesList;
+
+    void setData(ArrayList<String> categories) {
         categoriesList = categories;
         notifyDataSetChanged();
     }
@@ -27,8 +28,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CategoriesViewHolder holder, int position) {
-        Categories categories = categoriesList.get(position);
-        holder.binding.setCategories(categories);
+        holder.binding.setCategories(categoriesList.get(position));
     }
     @Override
     public int getItemCount() {
