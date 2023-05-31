@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.improve10x.sristores.databinding.CategoriesitemBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder> {
 
-    private ArrayList<String> categoriesList;
+    private List<String> categoriesList;
 
-    void setData(ArrayList<String> categories) {
+    void setData(List<String> categories) {
         categoriesList = categories;
         notifyDataSetChanged();
     }
