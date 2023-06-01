@@ -11,6 +11,16 @@ public class Product {
     private String imageUrl;
     public Rating rating;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    private String description;
+
     public Integer getId() {
         return id;
     }

@@ -1,5 +1,6 @@
 package com.improve10x.sristores.products;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -14,6 +15,12 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     public List<Product> products;
+
+    OnItemActionListener onItemActionListener;
+
+    void setOnItemActionListener(OnItemActionListener onItemActionListener){
+        this.onItemActionListener = onItemActionListener;
+    }
 
     void setData(List<Product> productList) {
         products = productList;
@@ -33,6 +40,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         Product product = products.get(position);
         holder.binding.setProduct(product);
         holder.binding.ratingBar.setRating(product.rating.getRate());
+        holder.binding.getRoot().setOnClickListener(v -> {
+            onItemActionListener.onClicked(products.get(position).getId());
+        });
     }
 
     @Override

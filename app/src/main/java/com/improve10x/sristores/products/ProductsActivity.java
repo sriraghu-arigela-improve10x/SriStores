@@ -60,11 +60,17 @@ public class ProductsActivity extends AppCompatActivity {
         });
     }
 
-
-
     private void setProductAdapter() {
         productAdapter = new ProductAdapter();
         productAdapter.setData(products);
+        productAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void onClicked(int productsId) {
+                Intent intent = new Intent(getApplicationContext(), ProductDetailsActivity.class);
+                intent.putExtra("products", productsId);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setProductRv() {
