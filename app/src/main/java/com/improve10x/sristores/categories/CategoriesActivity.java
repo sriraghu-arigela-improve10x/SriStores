@@ -1,14 +1,16 @@
-package com.improve10x.sristores;
+package com.improve10x.sristores.categories;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.os.Bundle;
-import android.widget.Toast;
-
-import com.improve10x.network.FakeApi;
-import com.improve10x.network.FakeApiService;
+import com.improve10x.sristores.network.FakeApi;
+import com.improve10x.sristores.network.FakeApiService;
 import com.improve10x.sristores.databinding.ActivityCategoriesBinding;
+import com.improve10x.sristores.products.ProductsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +68,14 @@ public class CategoriesActivity extends AppCompatActivity {
     private void setupCategoriesAdapter() {
         categoriesAdapter = new CategoriesAdapter();
         categoriesAdapter.setData(categories);
+        categoriesAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void onClicked(String categoryName) {
+                Intent intent = new Intent(getApplicationContext(), ProductsActivity.class);
+                intent.putExtra("category", categoryName);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setupCategoriesRv() {
@@ -74,8 +84,8 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
     private void setupData() {
-        categories = new ArrayList<>();
-        /*categories.add("electronics");
+        /*categories = new ArrayList<>();
+        *//*categories.add("electronics");
         categories.add("electronics");
         categories.add("electronics");
         categories.add("electronics");

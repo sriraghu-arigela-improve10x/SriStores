@@ -1,6 +1,6 @@
-package com.improve10x.network;
+package com.improve10x.sristores.network;
 
-import com.improve10x.models.Product;
+import com.improve10x.sristores.models.Product;
 
 import java.util.List;
 

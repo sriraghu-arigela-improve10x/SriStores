@@ -1,4 +1,4 @@
-package com.improve10x.network;
+package com.improve10x.sristores.network;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

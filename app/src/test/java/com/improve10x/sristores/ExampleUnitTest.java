@@ -5,9 +5,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import com.google.gson.Gson;
-import com.improve10x.models.Product;
-import com.improve10x.network.FakeApi;
-import com.improve10x.network.FakeApiService;
+import com.improve10x.sristores.models.Product;
+import com.improve10x.sristores.network.FakeApi;
+import com.improve10x.sristores.network.FakeApiService;
 
 import java.io.IOException;
 import java.util.List;

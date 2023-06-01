@@ -1,4 +1,4 @@
-package com.improve10x.models;
+package com.improve10x.sristores.models;
 
 public class Category {
 

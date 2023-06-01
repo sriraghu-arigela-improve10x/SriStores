@@ -1,4 +1,4 @@
-package com.improve10x.models;
+package com.improve10x.sristores.models;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -9,7 +9,7 @@ public class Product {
     private Float price;
     @SerializedName("image")
     private String imageUrl;
-    private Rating rating;
+    public Rating rating;
 
     public Integer getId() {
         return id;

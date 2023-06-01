@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.improve10x.sristores.categories.CategoriesActivity;
 import com.improve10x.sristores.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
@@ -20,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         Handler handler = new Handler();
         handler.postDelayed(() -> {
-            Intent intent = new Intent(this,CategoriesActivity.class);
+            Intent intent = new Intent(this, CategoriesActivity.class);
             startActivity(intent);
         },1500);
     }
