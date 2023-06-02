@@ -69,13 +69,10 @@ public class CategoriesActivity extends BaseActivity {
     private void setupCategoriesAdapter() {
         categoriesAdapter = new CategoriesAdapter();
         categoriesAdapter.setData(categories);
-        categoriesAdapter.setOnItemActionListener(new OnItemActionListener() {
-            @Override
-            public void onClicked(String categoryName) {
-                Intent intent = new Intent(getApplicationContext(), ProductsActivity.class);
-                intent.putExtra("category", categoryName);
-                startActivity(intent);
-            }
+        categoriesAdapter.setOnItemActionListener(categoryName -> {
+            Intent intent = new Intent(getApplicationContext(), ProductsActivity.class);
+            intent.putExtra("category", categoryName);
+            startActivity(intent);
         });
     }
 
