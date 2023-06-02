@@ -1,5 +1,6 @@
 package com.improve10x.sristores.network;
 
+import com.improve10x.sristores.cart.CartProduct;
 import com.improve10x.sristores.models.Product;
 
 import java.util.List;
@@ -18,4 +19,7 @@ public interface FakeApiService {
 
     @GET("/products/{productsId}")
     Call<Product> fetchProductDetails(@Path("productsId") int productsId);
+
+    @GET("/carts?userId=1")
+    Call<CartProduct> fetchCartProducts(@Path("userId") int userId);
 }

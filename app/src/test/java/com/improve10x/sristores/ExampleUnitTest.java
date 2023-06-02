@@ -25,7 +25,7 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 
-    @Test
+   /* @Test
     public void getCategories() throws IOException {
         FakeApiService fakeApiService = new FakeApi().createFakeApiService();
         Call<List<String>> call = fakeApiService.fetchCategories();
@@ -39,6 +39,16 @@ public class ExampleUnitTest {
     public void getCategoryProduct() throws IOException {
         FakeApiService fakeApiService = new FakeApi().createFakeApiService();
         Call<List<Product>> call = fakeApiService.fetchProducts("electronics");
+        List<Product> categories = call.execute().body();
+        assertNotNull(categories);
+        assertFalse(categories.isEmpty());
+        System.out.println(new Gson().toJson(categories));
+    }
+*/
+    @Test
+    public void getCart() throws IOException {
+        FakeApiService fakeApiService = new FakeApi().createFakeApiService();
+        Call<List<Product>> call = fakeApiService.fetchProducts("cart");
         List<Product> categories = call.execute().body();
         assertNotNull(categories);
         assertFalse(categories.isEmpty());

@@ -1,19 +1,18 @@
 package com.improve10x.sristores.products;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.improve10x.sristores.BaseActivity;
+import com.improve10x.sristores.Constants;
+import com.improve10x.sristores.categories.CategoriesActivity;
 import com.improve10x.sristores.databinding.ActivityProductsBinding;
 import com.improve10x.sristores.models.Product;
-import com.improve10x.sristores.network.FakeApi;
-import com.improve10x.sristores.network.FakeApiService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,20 +26,21 @@ public class ProductsActivity extends BaseActivity {
         private ActivityProductsBinding binding;
         private ArrayList<Product> products = new ArrayList<>();
         private ProductAdapter productAdapter;
-        //ToDO: private
-         String category;
+
+         private String category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityProductsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Products");
-        if(getIntent().hasExtra("category")){
-            category = getIntent().getStringExtra("category");
+        if(getIntent().hasExtra(Constants.KEY_CATEGORY_VALUE)){
+            category = getIntent().getStringExtra(Constants.KEY_CATEGORY_VALUE);
         }
         fetchProducts();
-        setProductAdapter();
-        setProductRv();
+        setupProductAdapter();
+        setupProductRv();
 
 
     }
@@ -72,17 +72,27 @@ public class ProductsActivity extends BaseActivity {
         });
     }
 
-    private void setProductAdapter() {
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void setupProductAdapter() {
         productAdapter = new ProductAdapter();
         productAdapter.setData(products);
         productAdapter.setOnItemActionListener(productsId -> {
-            Intent intent = new Intent(getApplicationContext(), ProductDetailsActivity.class);
-            intent.putExtra("products", productsId);
+            Intent intent = new Intent(ProductsActivity.this, ProductDetailsActivity.class);
+            intent.putExtra(Constants.KEY_PRODUCTS_VALUE, productsId);
             startActivity(intent);
         });
     }
 
-    private void setProductRv() {
+    private void setupProductRv() {
         binding.productRv.setLayoutManager(new GridLayoutManager(this, 2));
         binding.productRv.setAdapter(productAdapter);
     }

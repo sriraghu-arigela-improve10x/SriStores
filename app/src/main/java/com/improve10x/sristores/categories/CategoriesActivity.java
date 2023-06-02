@@ -2,13 +2,16 @@ package com.improve10x.sristores.categories;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.improve10x.sristores.BaseActivity;
+import com.improve10x.sristores.Constants;
 import com.improve10x.sristores.network.FakeApi;
 import com.improve10x.sristores.network.FakeApiService;
 import com.improve10x.sristores.databinding.ActivityCategoriesBinding;
@@ -32,6 +35,7 @@ public class CategoriesActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityCategoriesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Categories");
         fetchCategories();
         setupCategoriesAdapter();
@@ -66,12 +70,22 @@ public class CategoriesActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void setupCategoriesAdapter() {
         categoriesAdapter = new CategoriesAdapter();
         categoriesAdapter.setData(categories);
         categoriesAdapter.setOnItemActionListener(categoryName -> {
-            Intent intent = new Intent(getApplicationContext(), ProductsActivity.class);
-            intent.putExtra("category", categoryName);
+            Intent intent = new Intent(CategoriesActivity.this, ProductsActivity.class);
+            intent.putExtra(Constants.KEY_CATEGORY_VALUE, categoryName);
             startActivity(intent);
         });
     }

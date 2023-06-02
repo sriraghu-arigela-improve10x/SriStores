@@ -1,12 +1,15 @@
 package com.improve10x.sristores.products;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.improve10x.sristores.BaseActivity;
+import com.improve10x.sristores.Constants;
 import com.improve10x.sristores.databinding.ActivityProductDetailsBinding;
 import com.improve10x.sristores.models.Product;
 import com.improve10x.sristores.network.FakeApi;
@@ -24,9 +27,10 @@ public class ProductDetailsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityProductDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Product details");
-        if (getIntent().hasExtra("products")) {
-            productsId = getIntent().getIntExtra("products", productsId);
+        if (getIntent().hasExtra(Constants.KEY_PRODUCTS_VALUE)) {
+            productsId = getIntent().getIntExtra(Constants.KEY_PRODUCTS_VALUE, productsId);
         }
         fetchProductDetails();
     }
@@ -56,5 +60,15 @@ public class ProductDetailsActivity extends BaseActivity {
                 showToast("Failed to load the data");
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 }
