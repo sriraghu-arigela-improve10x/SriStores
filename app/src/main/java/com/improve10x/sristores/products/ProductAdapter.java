@@ -14,9 +14,9 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
-    public List<Product> products;
+    private List<Product> products;
 
-    OnItemActionListener onItemActionListener;
+    private OnItemActionListener onItemActionListener;
 
     void setOnItemActionListener(OnItemActionListener onItemActionListener){
         this.onItemActionListener = onItemActionListener;
@@ -39,7 +39,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = products.get(position);
         holder.binding.setProduct(product);
-        holder.binding.ratingBar.setRating(product.rating.getRate());
         holder.binding.getRoot().setOnClickListener(v -> {
             onItemActionListener.onClicked(products.get(position).getId());
         });

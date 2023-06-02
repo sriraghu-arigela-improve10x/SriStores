@@ -10,7 +10,7 @@ public class Product {
     @SerializedName("image")
     private String imageUrl;
     public Rating rating;
-
+    private String description;
     public String getDescription() {
         return description;
     }
@@ -18,8 +18,6 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    private String description;
 
     public Integer getId() {
         return id;

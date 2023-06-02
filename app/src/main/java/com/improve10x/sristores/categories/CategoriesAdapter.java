@@ -7,14 +7,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.sristores.databinding.CategoriesitemBinding;
-
+import com.improve10x.sristores.categories.OnItemActionListener;
 import java.util.List;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder> {
 
     private List<String> categoriesList;
 
-    public OnItemActionListener onItemActionListener;
+    private OnItemActionListener onItemActionListener;
 
     void setData(List<String> categories) {
         categoriesList = categories;
