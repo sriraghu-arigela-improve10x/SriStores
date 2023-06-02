@@ -1,10 +1,14 @@
 package com.improve10x.sristores.cart;
 
+import java.util.ArrayList;
+
 public class CartProduct {
 
     private Integer id;
     private Integer userId;
     private String date;
+
+    public ArrayList<CartProductsDetails> products;
 
     public Integer getId() {
         return id;
@@ -29,4 +33,6 @@ public class CartProduct {
     public void setDate(String date) {
         this.date = date;
     }
+
+
 }
