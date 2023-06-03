@@ -2,6 +2,7 @@ package com.improve10x.sristores.categories;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.improve10x.sristores.BaseActivity;
 import com.improve10x.sristores.Constants;
+import com.improve10x.sristores.R;
+import com.improve10x.sristores.cart.CartProductActivity;
 import com.improve10x.sristores.network.FakeApi;
 import com.improve10x.sristores.network.FakeApiService;
 import com.improve10x.sristores.databinding.ActivityCategoriesBinding;
@@ -43,6 +46,25 @@ public class CategoriesActivity extends BaseActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+            return true;
+        } else if (item.getItemId() == R.id.cart_shoping_icon) {
+            Intent intent = new Intent(this, CartProductActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.cart_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
     private void hideProgressBar() {
         binding.progressBar.setVisibility(View.GONE);
     }
@@ -68,16 +90,6 @@ public class CategoriesActivity extends BaseActivity {
                 showToast("Failed to load the data");
             }
         });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
-            finish();
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
     }
 
     private void setupCategoriesAdapter() {
