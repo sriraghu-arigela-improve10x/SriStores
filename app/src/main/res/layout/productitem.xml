@@ -25,7 +25,7 @@
 
             <ImageView
                 android:id="@+id/product_img"
-                imageUrl="@{product.imageUrl}"
+                imageUrl="@{product.imageUrls.get(0)}"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:adjustViewBounds="true"
@@ -53,7 +53,6 @@
                 style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:rating="@{product.rating.rate}"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_name_txt" />
@@ -63,7 +62,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@{String.valueOf(product.rating.count)}"
                 android:textColor="#050505"
                 app:layout_constraintBottom_toBottomOf="@+id/rating_bar"
                 app:layout_constraintStart_toEndOf="@+id/rating_bar"
@@ -91,6 +89,17 @@
                 app:layout_constraintStart_toEndOf="@+id/rupees_img"
                 app:layout_constraintTop_toTopOf="@+id/rupees_img"
                 tools:text="price" />
+
+            <TextView
+                android:id="@+id/disciption_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{product.description}"
+                android:textColor="#050505"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rupees_img" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </com.google.android.material.card.MaterialCardView>
 </layout>

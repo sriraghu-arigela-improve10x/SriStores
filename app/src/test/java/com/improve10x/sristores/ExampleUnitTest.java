@@ -40,7 +40,7 @@ public class ExampleUnitTest {
     @Test
     public void getCategoryProduct() throws IOException {
         FakeApiService fakeApiService = new FakeApi().createFakeApiService();
-        Call<List<Product>> call = fakeApiService.fetchProducts("electronics");
+        Call<List<Product>> call = fakeApiService.fetchProducts(1);
         List<Product> categories = call.execute().body();
         assertNotNull(categories);
         assertFalse(categories.isEmpty());

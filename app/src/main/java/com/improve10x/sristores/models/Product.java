@@ -1,15 +1,28 @@
 package com.improve10x.sristores.models;
 
+import android.widget.ImageView;
+
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 
 public class Product {
 
     private Integer id;
     private String title;
     private Float price;
-    @SerializedName("image")
-    private String imageUrl;
-    public Rating rating;
+    @SerializedName("images")
+    private ArrayList<String> imageUrls;
+
+    public ArrayList<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(ArrayList<String> imageUrls) {
+        this.imageUrls = imageUrls;
+    }
+
+
     private String description;
     public String getDescription() {
         return description;
@@ -41,21 +54,5 @@ public class Product {
 
     public void setPrice(Float price) {
         this.price = price;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public Rating getRating() {
-        return rating;
-    }
-
-    public void setRating(Rating rating) {
-        this.rating = rating;
     }
 }
