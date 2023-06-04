@@ -27,7 +27,7 @@ import retrofit2.Response;
 public class ProductsActivity extends BaseActivity {
 
         private ActivityProductsBinding binding;
-        private ArrayList<Product> products = new ArrayList<>();
+        private List<Product> products = new ArrayList<>();
         private ProductAdapter productAdapter;
 
          private String category;

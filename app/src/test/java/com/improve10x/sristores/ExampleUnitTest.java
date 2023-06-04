@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 import com.google.gson.Gson;
 import com.improve10x.sristores.cart.CartProduct;
+import com.improve10x.sristores.categories.Category;
 import com.improve10x.sristores.models.Product;
 import com.improve10x.sristores.network.FakeApi;
 import com.improve10x.sristores.network.FakeApiService;
@@ -26,11 +27,11 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 
-   /* @Test
+    @Test
     public void getCategories() throws IOException {
         FakeApiService fakeApiService = new FakeApi().createFakeApiService();
-        Call<List<String>> call = fakeApiService.fetchCategories();
-        List<String> categories = call.execute().body();
+        Call<List<Category>> call = fakeApiService.fetchCategories();
+        List<Category> categories = call.execute().body();
         assertNotNull(categories);
         assertFalse(categories.isEmpty());
         System.out.println(new Gson().toJson(categories));
@@ -45,7 +46,7 @@ public class ExampleUnitTest {
         assertFalse(categories.isEmpty());
         System.out.println(new Gson().toJson(categories));
     }
-*/
+
     @Test
     public void getCart() throws IOException {
         FakeApiService fakeApiService = new FakeApi().createFakeApiService();

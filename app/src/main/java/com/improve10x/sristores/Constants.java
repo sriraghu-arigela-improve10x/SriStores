@@ -8,5 +8,5 @@ public class Constants {
 
     public static final String KEY_CART_VALUE = "cart";
 
-    public static final String BASE_URL = "https://fakestoreapi.com/";
+    public static final String BASE_URL = "https://api.escuelajs.co/";
 }
