@@ -46,25 +46,6 @@ public class CategoriesActivity extends BaseActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
-            finish();
-            return true;
-        } else if (item.getItemId() == R.id.cart_shoping_icon) {
-            Intent intent = new Intent(this, CartProductActivity.class);
-            startActivity(intent);
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.cart_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
     private void hideProgressBar() {
         binding.progressBar.setVisibility(View.GONE);
     }

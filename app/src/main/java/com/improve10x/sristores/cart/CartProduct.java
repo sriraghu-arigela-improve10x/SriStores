@@ -10,6 +10,14 @@ public class CartProduct {
 
     public ArrayList<CartProductsDetails> products;
 
+    public ArrayList<CartProductsDetails> getProducts() {
+        return products;
+    }
+
+    public void setProducts(ArrayList<CartProductsDetails> products) {
+        this.products = products;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -33,6 +41,5 @@ public class CartProduct {
     public void setDate(String date) {
         this.date = date;
     }
-
 
 }

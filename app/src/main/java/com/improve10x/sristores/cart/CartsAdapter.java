@@ -12,7 +12,12 @@ import com.improve10x.sristores.products.OnItemActionListener;
 import java.util.List;
 
 public class CartsAdapter extends RecyclerView.Adapter<CartsViewHolder> {
-    private List<CartProduct> cartProducts;
+    private List<CartProductsDetails> cartProducts;
+
+    void setData(List<CartProductsDetails> cartProductsList) {
+        cartProducts = cartProductsList;
+        notifyDataSetChanged();
+    }
 
     private OnItemActionListener onItemActionListener;
 
@@ -20,9 +25,6 @@ public class CartsAdapter extends RecyclerView.Adapter<CartsViewHolder> {
         this.onItemActionListener = onItemActionListener;
     }
 
-    void setData(List<CartProduct> cartProductsList) {
-        cartProducts = cartProductsList;
-    }
     @NonNull
     @Override
     public CartsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,14 +35,9 @@ public class CartsAdapter extends RecyclerView.Adapter<CartsViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CartsViewHolder holder, int position) {
-        holder.cartItemBinding.idTxt.setText(String.valueOf(cartProducts));
-        holder.cartItemBinding.cartQuantityTxt.setText(String.valueOf(cartProducts));
-        holder.cartItemBinding.increaseImageBtn.setOnClickListener(v -> {
-            onItemActionListener.onClicked(cartProducts.get(position).getId());
-        });
-        holder.cartItemBinding.decreaseImageBtn.setOnClickListener(v -> {
-            onItemActionListener.onClicked(cartProducts.get(position).getId());
-        });
+        CartProductsDetails cartProductsDetails = new CartProductsDetails();
+        holder.cartItemBinding.idTxt.setText(String.valueOf(cartProductsDetails.getProductId()));
+        holder.cartItemBinding.cartQuantityTxt.setText(String.valueOf(cartProductsDetails.getProductId()));
     }
 
     @Override
